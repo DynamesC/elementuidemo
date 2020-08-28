@@ -52,7 +52,7 @@ export default {
         const { data: result } = await this.$http.post('login', this.loginForm)
         if (result.meta.status !== 200) return this.$message.error('login failed')
         this.$message.success('successfully login')
-        console.log(result)
+        // console.log(result)
         //  how to redirect to main page with token stored
         window.sessionStorage.setItem('token', result.data.token)
         this.$router.push('home')
