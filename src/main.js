@@ -6,14 +6,7 @@ import './plugins/element.js'
 import './assets/css/global.css'
 
 Vue.config.productionTip = false
-Vue.prototype.$http = axios
-axios.defaults.baseURL = 'http://127.0.0.1:8888/api/private/v1/'
-axios.interceptors.request.use(config => {
-  // console.log(config)
-  config.headers.Authorization = window.sessionStorage.getItem('token')
-  // console.log(config)
-  return config
-})
+axios.defaults.baseURL = 'http://esl.ylwlesl.com:9191/'
 
 new Vue({
   router,

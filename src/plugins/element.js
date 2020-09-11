@@ -5,6 +5,11 @@ import {
   FormItem,
   Input,
   Message,
+  Alert,
+  Loading,
+  Dialog,
+  Select,
+  Option,
   Container,
   Header,
   Aside,
@@ -27,6 +32,11 @@ import {
 
 Vue.use(Button)
 Vue.use(Form)
+Vue.use(Alert)
+Vue.use(Dialog)
+Vue.use(Loading)
+Vue.use(Select)
+Vue.use(Option)
 Vue.use(FormItem)
 Vue.use(Input)
 Vue.use(Container)

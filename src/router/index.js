@@ -1,9 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../components/Login.vue'
-import Home from '../components/Home.vue'
-import Welcome from '../components/Welcome.vue'
-import Users from '../components/user/Users.vue'
+import Login from '../components/Login/Login.vue'
+import Home from '@/components/Home/Home'
 
 Vue.use(VueRouter)
 
@@ -18,19 +16,9 @@ const routes = [
   },
   {
     path: '/home',
-    component: Home,
-    redirect: '/welcome',
-    children: [
-      {
-        path: '/welcome',
-        component: Welcome
-      },
-      {
-        path: '/users',
-        component: Users
-      }
-    ]
+    component: Home
   }
+
 ]
 
 const router = new VueRouter({
@@ -40,8 +28,13 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   //  next() direct let pass
   //  next('path') inject
-  if (to.path === '/login') return next()
-  const tokenStr = window.sessionStorage.getItem('token')
+  const tokenStr = window.sessionStorage.getItem('myToken')
+
+  if (to.path === '/login') {
+    if(!tokenStr)return next()
+    return next(false)
+  }
+
   if (!tokenStr) return next('/login')
   next()
 })
